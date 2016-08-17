@@ -1,7 +1,6 @@
 # GemStore
 
 This is a small web application using Angular.js as a front-end framework.
-"GemStore" is a sample web application using Angular.js as a front-end framework.
 
 
 **References:**
