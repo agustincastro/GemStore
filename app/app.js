@@ -17,10 +17,16 @@
   var gems = [
     {
       name: 'Dodecahedron',
-      price: 2.95,
+      price: 2,
       description: 'Some gens have hidden qualities beyond their luster, beyond their shine... Dodeca is one of those gems.',
       canPurchase: true,
       soldOut: false,
+      images: [
+        {
+          full: '../assets/img/gem-01.gif',
+          thumb: '../assets/img/gem-01.gif',
+        }
+      ],
     },
     {
       name: 'Pentagonal Gem',
@@ -28,6 +34,12 @@
       description: '...',
       canPurchase: true,
       soldOut: false,
+      images: [
+        {
+          full: '../assets/img/gem-02.gif',
+          thumb: '../assets/img/gem-02.gif',
+        }
+      ],
     }
   ];
 

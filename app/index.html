@@ -7,9 +7,10 @@
 </head>
 <body ng-controller="StoreController as store">
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="product in store.products">
+    <li class="list-group-item" ng-repeat="product in store.products | orderBy: '-price'">
       <h1> {{product.name}}</h1>
-      <em class="pull-right"> ${{product.price}} </em>
+      <em class="pull-right"> {{product.price | currency}} </em>
+      <img ng-src="{{product.images[0].full}}" />
       <p> {{product.description}} </p>
       <button ng-show="product.canPurchase">Add to cart</button>
     </li>
