@@ -14,6 +14,19 @@
 
   });
 
+  // Handles panel interactions
+  app.controller('PanelController', function(){
+    //Initialize first selected tab as property of the controller
+    this.tab = 1;
+    //Handles tab assignment when selected
+    this.selectTab = function(setTab){
+      this.tab = setTab;
+    };
+    this.isSelected = function(checkTab){
+      return this.tab === checkTab;
+    };
+  });
+
   var gems = [
     {
       name: 'Dodecahedron',
@@ -31,7 +44,7 @@
     {
       name: 'Pentagonal Gem',
       price: 5.95,
-      description: '...',
+      description: 'Belongs to the gemstone family of Beryls. Origin of name Latin "aqua"meaning water and "mar"sea. Legend has it that Mermaids tails were made of aquamarine.',
       canPurchase: true,
       soldOut: false,
       images: [
