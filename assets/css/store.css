@@ -1,0 +1,17 @@
+
+.store-container{
+  width: 50%;
+}
+
+.nav-pills>li>a{
+  color: #A41E67;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+  background-color: #A41E67 !important;
+  color: white;
+}
+
+.thumbnail img{
+  max-height: 50px;
+}

@@ -4,45 +4,59 @@
   <!-- Le styles -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/store.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body ng-controller="StoreController as store">
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="product in store.products | orderBy: '-price'">
-      <h1> {{product.name}}</h1>
-      <em class="pull-right"> {{product.price | currency}} </em>
-      <img ng-src="{{product.images[0].full}}" />
 
-      <selection ng-controller="PanelController as panel">
-        <ul class="nav nav-pills">
-          <li ng-class="{active : panel.isSelected(1)}">
-            <a href ng-click="panel.selectTab(1)">Description</a>
-          </li>
-          <li ng-class="{active : panel.isSelected(2)}">
-            <a href ng-click="panel.selectTab(2)">Specifications</a>
-          </li>
-          <li ng-class="{active : panel.isSelected(3)}">
-            <a href ng-click="panel.selectTab(3)">Reviews</a>
-          </li>
-        </ul>
-        
-        <div class="panel" ng-show="panel.isSelected(1)">
-          <h4>Description</h4>
-          <blockquote> {{product.description}} </blockquote>
-        </div>
-        <div class="panel" ng-show="panel.isSelected(2)">
-          <h4>Specifications</h4>
-          <blockquote>None yet</blockquote>
-        </div>
-        <div class="panel" ng-show="panel.isSelected(3)">
-          <h4>Reviews</h4>
-          <blockquote>None yet</blockquote>
-        </div>
-      </selection>
-      <button ng-show="product.canPurchase">Add to cart</button>
+  <div class="store-container">
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="product in store.products | orderBy: '-price'">
+        <h1> {{product.name}}</h1>
+        <em class="pull-right"> {{product.price | currency}} </em>
 
-    </li>
-  </ul>
+        <!-- Image Gallery  -->
+        <div class='gallery' ng-controller="GalleryController as gallery" ng-show="product.images.length">
+          <img ng-src="{{product.images[gallery.current]}}" />
+          <ul class="list-inline thumbs">
+            <li class="thumbnail" ng-repeat="image in product.images">
+              <img ng-src="{{image}}" />
+            </li>
+          </ul>
+        </div>
 
+
+        <selection ng-controller="PanelController as panel">
+          <ul class="nav nav-pills">
+            <li ng-class="{active : panel.isSelected(1)}">
+              <a href ng-click="panel.selectTab(1)">Description</a>
+            </li>
+            <li ng-class="{active : panel.isSelected(2)}">
+              <a href ng-click="panel.selectTab(2)">Specifications</a>
+            </li>
+            <li ng-class="{active : panel.isSelected(3)}">
+              <a href ng-click="panel.selectTab(3)">Reviews</a>
+            </li>
+          </ul>
+
+          <div class="panel" ng-show="panel.isSelected(1)">
+            <h4>Description</h4>
+            <blockquote> {{product.description}} </blockquote>
+          </div>
+          <div class="panel" ng-show="panel.isSelected(2)">
+            <h4>Specifications</h4>
+            <blockquote>None yet</blockquote>
+          </div>
+          <div class="panel" ng-show="panel.isSelected(3)">
+            <h4>Reviews</h4>
+            <blockquote>None yet</blockquote>
+          </div>
+        </selection>
+
+        <button ng-show="product.canPurchase">Add to cart</button>
+
+      </li>
+    </ul>
+  </div>
   <!-- Le javascript -->
   <script type="text/javascript" src="angular.min.js" ></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
