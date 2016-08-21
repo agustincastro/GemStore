@@ -10,7 +10,7 @@
   var app = angular.module('store', []);
 
   app.controller('StoreController', function(){
-    this.products = gems2;
+    this.products = gems;
 
   });
 
@@ -35,37 +35,7 @@
     };
   });
 
-
   var gems = [
-    {
-      name: 'Dodecahedron',
-      price: 2,
-      description: 'Some gens have hidden qualities beyond their luster, beyond their shine... Dodeca is one of those gems.',
-      canPurchase: true,
-      soldOut: false,
-      images: [
-        {
-          full: '../assets/img/gem-01.gif',
-          thumb: '../assets/img/gem-01.gif',
-        }
-      ],
-    },
-    {
-      name: 'Pentagonal Gem',
-      price: 5.95,
-      description: 'Belongs to the gemstone family of Beryls. Origin of name Latin "aqua"meaning water and "mar"sea. Legend has it that Mermaids tails were made of aquamarine.',
-      canPurchase: true,
-      soldOut: false,
-      images: [
-        {
-          full: '../assets/img/gem-02.gif',
-          thumb: '../assets/img/gem-02.gif',
-        }
-      ],
-    }
-  ];
-
-  var gems2 = [
     {
       name: 'Azurite',
       description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
