@@ -18,12 +18,10 @@
   max-height: 50px;
 }
 
-.review-form-container{
-  width: 50%;
+.ng-invalid.ng-dirty{
+  border-color:red;
 }
 
-.review-form-container > select,
-.review-form-container > textarea,
-.review-form-container > input {
-  width: 100%;
+.ng-valid.ng-dirty{
+  border-color:green;
 }
