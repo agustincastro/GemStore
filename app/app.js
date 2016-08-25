@@ -14,26 +14,10 @@
 
   });
 
-  // Handles panel interactions
-  app.controller('PanelController', function(){
-    //Initialize first selected tab as property of the controller
-    this.tab = 1;
-    //Handles tab assignment when selected
-    this.selectTab = function(setTab){
-      this.tab = setTab;
-    };
-    this.isSelected = function(checkTab){
-      return this.tab === checkTab;
-    };
-  });
-
   //Handles image gallery
-  app.controller('GalleryController', function(){
-    this.current = 0;
-    this.setCurrent = function(newGallery){
-      this.current = newGallery || 0;
-    };
-  });
+  //app.controller('GalleryController', function(){
+
+  //});
 
   app.controller('ReviewController', function(){
     this.review = {};
@@ -57,6 +41,39 @@
     return{
       restrict: 'A',  // Type of directive, A=Attribute
       templateUrl: 'product-specs.html'
+    };
+  });
+
+  app.directive("productPanels", function(){
+    return{
+      restrict: 'E',
+      templateUrl: 'product-panels.html',
+      controller: function(){ // Handles panel interactions
+        //Initialize first selected tab as property of the controller
+        this.tab = 1;
+        //Handles tab assignment when selected
+        this.selectTab = function(setTab){
+          this.tab = setTab;
+        };
+        this.isSelected = function(checkTab){
+          return this.tab === checkTab;
+        };
+      },
+      controllerAs: 'panel', //controller alias
+    }
+  });
+
+  app.directive("productGallery", function(){
+    return{
+      restrict: 'E',
+      templateUrl: 'product-gallery.html',
+      controller: function(){
+        this.current = 0;
+        this.setCurrent = function(newGallery){
+          this.current = newGallery || 0;
+        };
+      },
+      controllerAs: 'gallery',
     };
   });
 
