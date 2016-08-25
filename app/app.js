@@ -1,3 +1,4 @@
+//Top-level module attached via ng-app
 
 // DIRECTIVES: HTML annotations that trigger javascript events
 // MODULES: Where our application components live
@@ -7,17 +8,12 @@
 
 // It's good practice to store your application in a closure
 (function(){
-  var app = angular.module('store', []);
+  var app = angular.module('store', ['store-products']);
 
   app.controller('StoreController', function(){
     this.products = gems;
 
   });
-
-  //Handles image gallery
-  //app.controller('GalleryController', function(){
-
-  //});
 
   app.controller('ReviewController', function(){
     this.review = {};
@@ -25,55 +21,6 @@
       this.review.createdOn = Date.now();
       product.reviews.push(this.review);
       this.review = {};
-    };
-  });
-
-  app.directive("productDescription", function(){
-    // the dash in the directive name translates to cammelcase
-    return{
-      //configuration object defining how the directive will work
-      restrict: 'E',  // Type of directive, E=Element
-      templateUrl: 'product-description.html'
-    };
-  });
-
-  app.directive("productSpecs", function(){
-    return{
-      restrict: 'A',  // Type of directive, A=Attribute
-      templateUrl: 'product-specs.html'
-    };
-  });
-
-  app.directive("productPanels", function(){
-    return{
-      restrict: 'E',
-      templateUrl: 'product-panels.html',
-      controller: function(){ // Handles panel interactions
-        //Initialize first selected tab as property of the controller
-        this.tab = 1;
-        //Handles tab assignment when selected
-        this.selectTab = function(setTab){
-          this.tab = setTab;
-        };
-        this.isSelected = function(checkTab){
-          return this.tab === checkTab;
-        };
-      },
-      controllerAs: 'panel', //controller alias
-    }
-  });
-
-  app.directive("productGallery", function(){
-    return{
-      restrict: 'E',
-      templateUrl: 'product-gallery.html',
-      controller: function(){
-        this.current = 0;
-        this.setCurrent = function(newGallery){
-          this.current = newGallery || 0;
-        };
-      },
-      controllerAs: 'gallery',
     };
   });
 
@@ -160,6 +107,6 @@
       }]
     }
   ];
-
+  
 
 })();
