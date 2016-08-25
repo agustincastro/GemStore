@@ -11,9 +11,7 @@
   <div class="store-container">
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="product in store.products | orderBy: '-price'">
-        <h1> {{product.name}}</h1>
-        <em class="pull-right"> {{product.price | currency}} </em>
-
+        <h3>{{product.name}} <em class="pull-right">{{product.price | currency}}</em></h3>
         <!-- Image Gallery  -->
         <div class='gallery' ng-controller="GalleryController as gallery" ng-show="product.images.length">
           <img ng-src="{{product.images[gallery.current]}}" />
@@ -38,13 +36,12 @@
             </li>
           </ul>
 
-          <div class="panel" ng-show="panel.isSelected(1)">
-            <h4>Description</h4>
-            <blockquote> {{product.description}} </blockquote>
+          <div class="panel">
+            <!-- Description custom directive -->
+            <product-description ng-show="panel.isSelected(1)"></product-description>
           </div>
-          <div class="panel" ng-show="panel.isSelected(2)">
-            <h4>Specifications</h4>
-            <blockquote>None yet</blockquote>
+          <div class="panel" ng-show="panel.isSelected(2)" product-specs>
+              <!-- Specs custom atribute -->
           </div>
           <div class="panel" ng-show="panel.isSelected(3)">
             <h4>Reviews</h4>

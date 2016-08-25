@@ -44,6 +44,22 @@
     };
   });
 
+  app.directive("productDescription", function(){
+    // the dash in the directive name translates to cammelcase
+    return{
+      //configuration object defining how the directive will work
+      restrict: 'E',  // Type of directive, E=Element
+      templateUrl: 'product-description.html'
+    };
+  });
+
+  app.directive("productSpecs", function(){
+    return{
+      restrict: 'A',  // Type of directive, A=Attribute
+      templateUrl: 'product-specs.html'
+    };
+  });
+
   var gems = [
     {
       name: 'Azurite',
